@@ -4,6 +4,38 @@ Run all debugging exercises sequentially
 
 import sys
 import importlib.util
+import os
+
+def check_dependencies():
+    """Check if required dependencies are installed"""
+    missing = []
+    
+    # Check numpy (required for exercises 2-3)
+    try:
+        import numpy
+    except ImportError:
+        missing.append("numpy")
+    
+    # Check matplotlib (required for exercise 3)
+    try:
+        import matplotlib
+    except ImportError:
+        missing.append("matplotlib")
+    
+    if missing:
+        print("\n" + "="*80)
+        print("⚠ WARNING: Missing dependencies detected!")
+        print("="*80)
+        print(f"Missing packages: {', '.join(missing)}")
+        print("\nPlease run the setup script first:")
+        print("  bash setup.sh")
+        print("  # Or on Windows: setup.bat")
+        print("\nOr install manually:")
+        print("  pip install -r requirements.txt")
+        print("="*80)
+        return False
+    
+    return True
 
 def run_exercise(module_name):
     """Run an exercise module"""
@@ -28,6 +60,17 @@ if __name__ == "__main__":
     print("="*80)
     print("DEBUGGING EXERCISES - RUNNING ALL")
     print("="*80)
+    
+    # Check if we're in a virtual environment (recommended)
+    if not os.environ.get('VIRTUAL_ENV') and os.path.exists('venv'):
+        print("\n⚠ Note: Virtual environment exists but may not be activated.")
+        print("  Consider running: source venv/bin/activate")
+        print("  Or use: bash run.sh\n")
+    
+    # Check basic dependencies
+    if not check_dependencies():
+        print("\n❌ Cannot proceed without required dependencies.")
+        sys.exit(1)
     
     # Check if PyTorch is available for Exercise 4
     try:

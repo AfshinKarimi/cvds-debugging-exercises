@@ -1,12 +1,45 @@
 # Debugging & Refactoring Exercises
 
+> **For Reviewers:** This repository is ready to use! Simply clone it and run `bash setup.sh` (or `setup.bat` on Windows), then `bash run.sh` to execute all exercises. No manual configuration needed.
+
 This repository contains modular Python solutions for debugging tasks. Each exercise demonstrates both buggy and fixed versions of code, helping to understand common debugging scenarios.
 
-## Quick Start
+## 🚀 Quick Start (For Reviewers)
+
+**The easiest way to get started:**
 
 ```bash
 # 1. Clone the repository
-git clone <repository-url>
+git clone https://github.com/AfshinKarimi/cvds-debugging-exercises.git
+cd cvds-debugging-exercises
+
+# 2. Run setup script (automates everything)
+bash setup.sh
+# On Windows: setup.bat
+
+# 3. Run all exercises
+bash run.sh
+# Or: source venv/bin/activate && python3 run_all_exercises.py
+```
+
+**That's it!** The setup script will:
+- ✅ Check Python version
+- ✅ Create virtual environment
+- ✅ Install all dependencies
+- ✅ Verify everything is ready
+
+**Verify setup (optional):**
+```bash
+python3 verify_setup.py
+```
+
+**Manual Setup (Alternative):**
+
+If you prefer manual setup:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/AfshinKarimi/cvds-debugging-exercises.git
 cd cvds-debugging-exercises
 
 # 2. Create and activate virtual environment
